@@ -9,14 +9,14 @@ import {
   TextInput,
 } from "react-admin";
 
-export const NameFilter = (props) => {
+const NameFilter = (props) => {
   return (
     <Filter {...props}>
-      <TextInput resettable label="Search Farmer" source="name" alwaysOn />
+      <TextInput resettable label="Search Volunteer" source="name" alwaysOn />
     </Filter>
   );
 };
-export const Volunteer = (props) => {
+const VolunteerUnverified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
@@ -36,10 +36,12 @@ export const Volunteer = (props) => {
         <Datagrid rowClick="">
           <TextField source="name" />
           <TextField source="contact" />
+          <TextField source="email" />
+          <TextField source="city" />
+          <TextField source="state" />
         </Datagrid>
       )}
     </List>
   );
 };
-
-export default Volunteer;
+export default VolunteerUnverified;
