@@ -14,20 +14,15 @@ const NameFilter = (props) => {
   return (
     <Filter {...props}>
       <TextInput resettable label="Search Volunteer" source="name" alwaysOn />
+      {/* <TextInput label="Title" source="title" defaultValue="Hello, World!" />
+      <TextInput label="Ttle" source="ttle" defaultValue="Hello, World!" /> */}
     </Filter>
   );
 };
 const VolunteerVerified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
-    <List
-      title="Volunteers"
-      filters={<NameFilter />}
-      {...props}
-      perPage={25}
-      exporter={false}
-      bulkActionButtons={false}
-    >
+    <List title="Volunteers" filters={<NameFilter />} {...props} perPage={25}>
       {isSmall ? (
         <SimpleList
           primaryText={(record) => record.name}

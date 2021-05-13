@@ -12,6 +12,7 @@ export default {
     const [start, end] = [(page - 1) * perPage, page * perPage - 1];
     switch (resource) {
       case "volunteers/verified": {
+        console.log(params);
         if (params.filter.name) {
           url = `${apiUrl}/api/volunteer/list?start=${start}&end=${end}&name=${params.filter.name}&verified=true&status=true`;
         } else {
@@ -61,6 +62,47 @@ export default {
           data: json.data.data,
           total: json.data.count,
         };
+      }
+      case "oxygen/verified": {
+        if (params.filter.name) {
+          url = `${apiUrl}/api/oxygen/list?start=${start}&end=${end}&name=${params.filter.name}&verified=true&status=true`;
+        } else {
+          url = `${apiUrl}/api/oxygen/list?start=${start}&end=${end}&verified=true&status=true`;
+        }
+        // eslint-disable-next-line no-unused-vars
+        const { headers, json } = await httpClient(url);
+        json.data.data.forEach((dat) => {
+          dat.id = dat._id;
+        });
+
+        return {
+          data: json.data.data,
+          total: json.data.count,
+        };
+      }
+      case "oxygen/unverified": {
+        return;
+      }
+      case "beds/verified": {
+        return;
+      }
+      case "beds/unverified": {
+        return;
+      }
+      case "medicine/verified": {
+        return;
+      }
+      case "medicine/unverified": {
+        return;
+      }
+      case "patient/verified": {
+        return;
+      }
+      case "patient/unverified": {
+        return;
+      }
+      case "donor": {
+        return;
       }
       default:
         return;
