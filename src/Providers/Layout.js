@@ -96,7 +96,7 @@ const Menu = ({ onMenuClick, logout }) => {
         exact
       />
       <MenuItemLink
-        to="/medicine/verfied"
+        to="/medicine/verified"
         primaryText="Verified Medicine"
         leftIcon={<LocalHospital fontSize="large" />}
         onClick={onMenuClick}

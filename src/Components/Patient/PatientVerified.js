@@ -5,23 +5,24 @@ import {
   List,
   SimpleList,
   TextField,
-  Filter,
+  Create,
+  SimpleForm,
   TextInput,
+  NumberInput,
+  BooleanInput,
+  DateInput,
 } from "react-admin";
-
-export const NameFilter = (props) => {
-  return (
-    <Filter {...props}>
-      <TextInput resettable label="Search Volunteer" source="name" alwaysOn />
-    </Filter>
-  );
-};
+import { FilterBar } from "../../Utils/Filter";
 export const PatientVerified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
       title="Volunteers"
-      filters={<NameFilter />}
+      filters={
+        <FilterBar
+          bars={[{ source: "name", label: "Search Patients By Name" }]}
+        />
+      }
       {...props}
       perPage={25}
       exporter={false}
@@ -31,7 +32,7 @@ export const PatientVerified = (props) => {
         <SimpleList
           primaryText={(record) => record.name}
           secondaryText={(record) => record.hospitalcity}
-          tertiaryText={(record)=>record.contact}
+          tertiaryText={(record) => record.contact}
         />
       ) : (
         <Datagrid rowClick="">
@@ -45,5 +46,19 @@ export const PatientVerified = (props) => {
     </List>
   );
 };
-
+export const PatientVerifiedCreate = (props) => {
+  return (
+    <Create {...props}>
+      <SimpleForm>
+        <TextInput source="name" />
+        <DateInput source="dob" />
+        <TextInput source="email" />
+        <TextInput source="hospitalcity" />
+        <TextInput source="state" />
+        <TextInput source="hospital" />
+        <NumberInput source="contact" />
+      </SimpleForm>
+    </Create>
+  );
+};
 export default PatientVerified;

@@ -1,27 +1,16 @@
 import React from "react";
 import { useMediaQuery } from "@material-ui/core";
-import {
-  Datagrid,
-  List,
-  SimpleList,
-  TextField,
-  Filter,
-  TextInput,
-} from "react-admin";
-
-const NameFilter = (props) => {
-  return (
-    <Filter {...props}>
-      <TextInput resettable label="Search Volunteer" source="name" alwaysOn />
-    </Filter>
-  );
-};
+import { Datagrid, List, SimpleList, TextField } from "react-admin";
+import { FilterBar } from "../../Utils/Filter";
+import { VolApproveBtn } from "../../Utils/Buttons";
 const VolunteerUnverified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
-      title="Volunteers"
-      filters={<NameFilter />}
+      title="Volunteer Registrations"
+      filters={
+        <FilterBar bars={[{ source: "name", label: "Search By Name" }]} />
+      }
       {...props}
       perPage={25}
       exporter={false}
@@ -31,6 +20,7 @@ const VolunteerUnverified = (props) => {
         <SimpleList
           primaryText={(record) => record.name}
           secondaryText={(record) => record.contact}
+          tertiaryText={(record) => record.city}
         />
       ) : (
         <Datagrid rowClick="">
@@ -39,6 +29,7 @@ const VolunteerUnverified = (props) => {
           <TextField source="email" />
           <TextField source="city" />
           <TextField source="state" />
+          <VolApproveBtn />
         </Datagrid>
       )}
     </List>

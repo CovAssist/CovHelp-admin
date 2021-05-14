@@ -5,23 +5,21 @@ import {
   List,
   SimpleList,
   TextField,
-  Filter,
+  Create,
+  SimpleForm,
   TextInput,
+  NumberInput,
 } from "react-admin";
 
-export const NameFilter = (props) => {
-  return (
-    <Filter {...props}>
-      <TextInput resettable label="Search Volunteer" source="name" alwaysOn />
-    </Filter>
-  );
-};
+import { FilterBar } from "../../Utils/Filter";
 export const BedsVerified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
       title="Volunteers"
-      filters={<NameFilter />}
+      filters={
+        <FilterBar bars={[{ source: "hoscity", label: "Search By City" }]} />
+      }
       {...props}
       perPage={25}
       exporter={false}
@@ -31,19 +29,34 @@ export const BedsVerified = (props) => {
         <SimpleList
           primaryText={(record) => record.hosName}
           secondaryText={(record) => record.hosCity}
-          tertiaryText={(record)=>record.numOfBeds}
+          tertiaryText={(record) => record.numOfBeds}
         />
       ) : (
         <Datagrid rowClick="">
           <TextField source="hosName" />
-          <TextField source="hosCity" />
+          <TextField source="hoscity" />
           <TextField source="state" />
           <TextField source="numOfBeds" />
           <TextField source="hosFees" />
-          <TextField source="verificationTime"/>
+          <TextField source="verificationTime" />
         </Datagrid>
       )}
     </List>
+  );
+};
+export const BedsVerifiedCreate = (props) => {
+  return (
+    <Create {...props}>
+      <SimpleForm>
+        <TextInput source="hosName" />
+        <TextInput source="hosContact" />
+        <TextInput source="hoscity" label="City" />
+        <TextInput source="state" />
+        <NumberInput source="numOfBeds" />
+        <NumberInput source="hosFees" />
+        <TextInput source="verifiedBy" />
+      </SimpleForm>
+    </Create>
   );
 };
 

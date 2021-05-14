@@ -84,13 +84,41 @@ export default {
         return;
       }
       case "beds/verified": {
-        return;
+        if (params.filter.hoscity) {
+          url = `${apiUrl}/api/beds/list?start=${start}&end=${end}&hoscity=${params.filter.hoscity}&verified=true&status=true`;
+        } else {
+          url = `${apiUrl}/api/beds/list?start=${start}&end=${end}&verified=true&status=true`;
+        }
+        // eslint-disable-next-line no-unused-vars
+        const { headers, json } = await httpClient(url);
+        json.data.data.forEach((dat) => {
+          dat.id = dat._id;
+        });
+
+        return {
+          data: json.data.data,
+          total: json.data.count,
+        };
       }
       case "beds/unverified": {
         return;
       }
       case "medicine/verified": {
-        return;
+        if (params.filter.name) {
+          url = `${apiUrl}/api/medicine/list?start=${start}&end=${end}&name=${params.filter.name}&verified=true&status=false`;
+        } else {
+          url = `${apiUrl}/api/medicine/list?start=${start}&end=${end}&verified=true&status=false`;
+        }
+        // eslint-disable-next-line no-unused-vars
+        const { headers, json } = await httpClient(url);
+        json.data.data.forEach((dat) => {
+          dat.id = dat._id;
+        });
+
+        return {
+          data: json.data.data,
+          total: json.data.count,
+        };
       }
       case "medicine/unverified": {
         return;
@@ -102,10 +130,40 @@ export default {
         return;
       }
       case "donor": {
-        return;
+        if (params.filter.blood) {
+          url = `${apiUrl}/api/donor/list?start=${start}&end=${end}&blood=${params.filter.blood}&verified=true&status=false`;
+        } else {
+          url = `${apiUrl}/api/donor/list?start=${start}&end=${end}&verified=true&status=false`;
+        }
+        // eslint-disable-next-line no-unused-vars
+        const { headers, json } = await httpClient(url);
+        json.data.data.forEach((dat) => {
+          dat.id = dat._id;
+        });
+
+        return {
+          data: json.data.data,
+          total: json.data.count,
+        };
       }
       default:
         return;
     }
+  },
+  create: async (resource, params) => {
+    const request = await resource.split("/");
+    console.log(typeof resource, resource);
+    const { headers, json } = await httpClient(
+      `${apiUrl}/api/${request[0]}/create?${
+        request[1] === "verified" ? "verified=true" : "verified:false"
+      }`,
+      {
+        method: "POST",
+        body: JSON.stringify(params),
+      }
+    );
+    console.log(json);
+    json.data.id = json.data._id;
+    return { data: json.data };
   },
 };

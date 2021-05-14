@@ -3,6 +3,7 @@ import { Admin, Resource } from "react-admin";
 import { BedsVerified } from "../Components/Beds";
 import { Donor } from "../Components/Donor";
 import { OxygenVerified } from "../Components/Oxygen";
+import { MedicineVerified } from "../Components/Medicine";
 import { PatientVerified } from "../Components/Patient";
 import {
   VolunteerVerified,
@@ -12,6 +13,10 @@ import {
 import dataprovider from "../Providers/dataProvider";
 import CustomLayout from "../Providers/Layout";
 import Toast from "../Utils/Toast";
+import { OxygenVerifiedCreate } from "../Components/Oxygen/OxygenVerified";
+import { MedicineVerifiedCreate } from "../Components/Medicine/MedicineVerified";
+import { BedsVerifiedCreate } from "../Components/Beds/BedsVerified";
+import { PatientVerifiedCreate } from "../Components/Patient/PatientVerified";
 const App = () => {
   return (
     <>
@@ -20,10 +25,26 @@ const App = () => {
         <Resource name="volunteers/verified" list={VolunteerVerified} />
         <Resource name="volunteers/past" list={VolunteerPast} />
         <Resource name="volunteers/unverified" list={VolunteerUnverified} />
-        <Resource name="oxygen/verified" list={OxygenVerified} />
-        <Resource name="medicine/verified" list={OxygenVerified} />
-        <Resource name="beds/verified" list={BedsVerified} />
-        <Resource name="patients/verified" list={PatientVerified} />
+        <Resource
+          name="oxygen/verified"
+          list={OxygenVerified}
+          create={OxygenVerifiedCreate}
+        />
+        <Resource
+          name="medicine/verified"
+          list={MedicineVerified}
+          create={MedicineVerifiedCreate}
+        />
+        <Resource
+          name="beds/verified"
+          list={BedsVerified}
+          create={BedsVerifiedCreate}
+        />
+        <Resource
+          name="patients/verified"
+          list={PatientVerified}
+          create={PatientVerifiedCreate}
+        />
         <Resource name="donor" list={Donor} />
       </Admin>
     </>

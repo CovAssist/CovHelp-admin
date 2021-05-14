@@ -12,17 +12,18 @@ const useStyles = makeStyles({
     },
   },
 });
-const VolunteerLeave = ({ record }) => {
+
+const VolunteerApprove = ({ record }) => {
   const classes = useStyles();
   const { setAlertProps } = useContext(ContextProvider);
-  const [status, setStatus] = useState(record.status);
+  const [status, setStatus] = useState(!record.verified);
   return status ? (
     <Button
       className={classes.btn}
-      label="Remove Volunteer"
+      label="Approve Volunteer"
       onClick={async (event) => {
         event.stopPropagation();
-        const data = await changeVolunteerStatus({ id: record.id });
+        const data = await changeVolunteerStatus({ id: record.id }, true);
         setStatus(false);
         setAlertProps({
           open: true,
@@ -32,8 +33,8 @@ const VolunteerLeave = ({ record }) => {
       }}
     />
   ) : (
-    <Button label="Remove Volunteer" className={classes.btn} disabled />
+    <Button className={classes.btn} label="Approved" disabled />
   );
 };
 
-export default VolunteerLeave;
+export default VolunteerApprove;

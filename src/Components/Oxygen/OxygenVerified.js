@@ -5,23 +5,22 @@ import {
   List,
   SimpleList,
   TextField,
-  Filter,
+  SimpleForm,
+  Create,
   TextInput,
+  NumberInput,
+  BooleanInput,
 } from "react-admin";
+import { FilterBar } from "../../Utils/Filter";
 
-export const NameFilter = (props) => {
-  return (
-    <Filter {...props}>
-      <TextInput resettable label="Search Volunteer" source="name" alwaysOn />
-    </Filter>
-  );
-};
 export const OxygenVerified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
-      title="Volunteers"
-      filters={<NameFilter />}
+      title="Verified Oxygen"
+      filters={
+        <FilterBar bars={[{ source: "city", label: "Search By City" }]} />
+      }
       {...props}
       perPage={25}
       exporter={false}
@@ -31,7 +30,7 @@ export const OxygenVerified = (props) => {
         <SimpleList
           primaryText={(record) => record.supplierName}
           secondaryText={(record) => record.supplierContact}
-          tertiaryText={(record)=>record.city}
+          tertiaryText={(record) => record.city}
         />
       ) : (
         <Datagrid rowClick="">
@@ -40,12 +39,26 @@ export const OxygenVerified = (props) => {
           <TextField source="city" />
           <TextField source="state" />
           <TextField source="price" />
-          <TextField source="verificationTime"/>
-          <TextField source="delivery"/>
+          <TextField source="verificationTime" />
+          <TextField source="delivery" />
         </Datagrid>
       )}
     </List>
   );
 };
-
+export const OxygenVerifiedCreate = (props) => {
+  return (
+    <Create {...props}>
+      <SimpleForm>
+        <TextInput source="supplierName" />
+        <TextInput source="supplierContact" />
+        <TextInput source="city" />
+        <TextInput source="state" />
+        <NumberInput source="price" />
+        <TextInput source="verifiedBy" />
+        <BooleanInput source="delivery" />
+      </SimpleForm>
+    </Create>
+  );
+};
 export default OxygenVerified;
