@@ -1,116 +1,132 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
-import { MenuItemLink, Layout } from "react-admin";
-import {
-  useMediaQuery,
-  Tooltip,
-  List,
-  ListItem,
-  ListItemText,
-  Collapse,
-} from "@material-ui/core";
+import { Layout, MenuItemLink } from "react-admin";
+import { useMediaQuery } from "@material-ui/core";
 import {
   Person,
   LocalGasStation,
   LocalHospital,
   Hotel,
-  ExpandLess,
-  ExpandMore,
   CheckCircle,
   PeopleAltOutlined,
   PersonAdd,
-  GetApp,
+  Favorite,
+  Accessibility,
 } from "@material-ui/icons";
+import ListCollapse from "./List";
 
 const Menu = ({ onMenuClick, logout }) => {
   const isXSmall = useMediaQuery((theme) => theme.breakpoints.down("xs"));
   const open = useSelector((state) => state.admin.ui.sidebarOpen);
   const [openVolunteerData, setOpenVolunteerData] = React.useState(false);
+  const [openOxygenData, setOpenOxygenData] = React.useState(false);
+  const [openMedicineData, setOpenMedicineData] = React.useState(false);
+  const [openBedsData, setOpenBedsData] = React.useState(false);
+  const [openPatientData, setOpenPatientData] = React.useState(false);
   return (
     <div>
       <br />
-      <List component="nav">
-        <Tooltip
-          title="Volunteer Data"
-          disableHoverListener={open ? true : false}
-          placement="right"
-        >
-          <ListItem
-            button
-            onClick={() => {
-              setOpenVolunteerData((prevOpen) => !prevOpen);
-            }}
-          >
-            {openVolunteerData ? <ExpandLess /> : <ExpandMore />}
-            <ListItemText
-              primary={open ? "Volunteer Data" : ""}
-              style={
-                openVolunteerData
-                  ? { margin: "0 16px" }
-                  : { margin: "0 16px", color: "#6E6E6E" }
-              }
-            />
-          </ListItem>
-        </Tooltip>
-        <Collapse in={openVolunteerData} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem style={open ? { paddingLeft: 28 } : { paddingLeft: 16 }}>
-              <MenuItemLink
-                to="/volunteers/verified"
-                primaryText="Volunteers"
-                onClick={onMenuClick}
-                leftIcon={<Person />}
-                style={{ paddingLeft: 0 }}
-                exact
-              />
-            </ListItem>
-            <ListItem style={open ? { paddingLeft: 28 } : { paddingLeft: 16 }}>
-              <MenuItemLink
-                to="/volunteers/unverified"
-                primaryText="Volunteer Regitrations"
-                onClick={onMenuClick}
-                leftIcon={<PersonAdd />}
-                style={{ paddingLeft: 0 }}
-                exact
-              />
-            </ListItem>
-            <ListItem style={open ? { paddingLeft: 28 } : { paddingLeft: 16 }}>
-              <MenuItemLink
-                to="/volunteers/past"
-                primaryText={"Past Volunteers"}
-                onClick={onMenuClick}
-                leftIcon={<PeopleAltOutlined />}
-                style={{ paddingLeft: 0 }}
-                exact
-              />
-            </ListItem>
-          </List>
-        </Collapse>
-      </List>
-      <MenuItemLink
-        to="/oxygen/verified"
-        primaryText="Verified Oxygen"
-        leftIcon={<LocalGasStation fontSize="large" />}
-        onClick={onMenuClick}
-        sidebarIsOpen={open}
-        exact
+      <ListCollapse
+        onMenuClick={onMenuClick}
+        title="Volunteer Data"
+        state={openVolunteerData}
+        setState={setOpenVolunteerData}
+        links={[
+          {
+            text: "Volunteers",
+            url: "/volunteers/verified",
+            icon: Person,
+          },
+          {
+            text: "Registrations",
+            url: "/volunteers/unverified",
+            icon: PersonAdd,
+          },
+          {
+            text: "Past Volunteers",
+            url: "/volunteers/past",
+            icon: PeopleAltOutlined,
+          },
+        ]}
       />
-      <MenuItemLink
-        to="/medicine/verified"
-        primaryText="Verified Medicine"
-        leftIcon={<LocalHospital fontSize="large" />}
-        onClick={onMenuClick}
-        sidebarIsOpen={open}
-        exact
+      <ListCollapse
+        onMenuClick={onMenuClick}
+        title="Oxygen Data"
+        state={openOxygenData}
+        setState={setOpenOxygenData}
+        links={[
+          {
+            text: "Verified Oxygen",
+            url: "/oxygen/verified",
+            icon: CheckCircle,
+          },
+          {
+            text: "Unverified Oxygen",
+            url: "/oxygen/unverified",
+            icon: LocalGasStation,
+          },
+        ]}
+      />
+      <ListCollapse
+        onMenuClick={onMenuClick}
+        title="Medicine Data"
+        state={openMedicineData}
+        setState={setOpenMedicineData}
+        links={[
+          {
+            text: "Medicine Verified",
+            url: "/medicine/verified",
+            icon: LocalHospital,
+          },
+          {
+            text: "Unverified Medicine",
+            url: "/medicine/unverified",
+            icon: LocalHospital,
+          },
+        ]}
       />
 
+      <ListCollapse
+        onMenuClick={onMenuClick}
+        title="Vacant Beds"
+        state={openBedsData}
+        setState={setOpenBedsData}
+        links={[
+          {
+            text: "Verified Beds",
+            url: "/beds/verified",
+            icon: Hotel,
+          },
+          {
+            text: "Unverified Beds",
+            url: "/beds/unverified",
+            icon: Hotel,
+          },
+        ]}
+      />
+      <ListCollapse
+        onMenuClick={onMenuClick}
+        title="Patient Data"
+        state={openPatientData}
+        setState={setOpenPatientData}
+        links={[
+          {
+            text: "Verified Patients",
+            url: "/patients/verified",
+            icon: Accessibility,
+          },
+          {
+            text: "Unverified Patients",
+            url: "/patients/unverified",
+            icon: Accessibility,
+          },
+        ]}
+      />
       <MenuItemLink
-        to="/beds/verified"
-        primaryText="Verified Vacant Beds"
-        leftIcon={<Hotel fontSize="large" />}
+        to="/donor"
+        primaryText="Donors"
+        leftIcon={<Favorite />}
         onClick={onMenuClick}
-        sidebarIsOpen={open}
-        exact
       />
       {isXSmall && logout}
     </div>

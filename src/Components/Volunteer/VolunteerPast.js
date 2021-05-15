@@ -12,7 +12,6 @@ const VolunteerPast = (props) => {
       }
       {...props}
       perPage={25}
-      exporter={false}
       bulkActionButtons={false}
     >
       {isSmall ? (

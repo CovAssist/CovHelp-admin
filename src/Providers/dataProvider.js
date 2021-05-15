@@ -1,6 +1,8 @@
 import { fetchUtils } from "react-admin";
 const apiUrl =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:5000";
+  process.env.NODE_ENV === "production"
+    ? "https://covhelp.herokuapp.com"
+    : "http://localhost:5000";
 const httpClient = (url, options = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
@@ -12,7 +14,6 @@ export default {
     const [start, end] = [(page - 1) * perPage, page * perPage - 1];
     switch (resource) {
       case "volunteers/verified": {
-        console.log(params);
         if (params.filter.name) {
           url = `${apiUrl}/api/volunteer/list?start=${start}&end=${end}&name=${params.filter.name}&verified=true&status=true`;
         } else {
@@ -81,7 +82,21 @@ export default {
         };
       }
       case "oxygen/unverified": {
-        return;
+        if (params.filter.name) {
+          url = `${apiUrl}/api/oxygen/list?start=${start}&end=${end}&name=${params.filter.name}&verified=false&status=true`;
+        } else {
+          url = `${apiUrl}/api/oxygen/list?start=${start}&end=${end}&verified=false&status=true`;
+        }
+        // eslint-disable-next-line no-unused-vars
+        const { headers, json } = await httpClient(url);
+        json.data.data.forEach((dat) => {
+          dat.id = dat._id;
+        });
+
+        return {
+          data: json.data.data,
+          total: json.data.count,
+        };
       }
       case "beds/verified": {
         if (params.filter.hoscity) {
@@ -101,13 +116,27 @@ export default {
         };
       }
       case "beds/unverified": {
-        return;
+        if (params.filter.hoscity) {
+          url = `${apiUrl}/api/beds/list?start=${start}&end=${end}&hoscity=${params.filter.hoscity}&verified=false&status=true`;
+        } else {
+          url = `${apiUrl}/api/beds/list?start=${start}&end=${end}&verified=false&status=true`;
+        }
+        // eslint-disable-next-line no-unused-vars
+        const { headers, json } = await httpClient(url);
+        json.data.data.forEach((dat) => {
+          dat.id = dat._id;
+        });
+
+        return {
+          data: json.data.data,
+          total: json.data.count,
+        };
       }
       case "medicine/verified": {
         if (params.filter.name) {
-          url = `${apiUrl}/api/medicine/list?start=${start}&end=${end}&name=${params.filter.name}&verified=true&status=false`;
+          url = `${apiUrl}/api/medicine/list?start=${start}&end=${end}&name=${params.filter.name}&verified=true&status=true`;
         } else {
-          url = `${apiUrl}/api/medicine/list?start=${start}&end=${end}&verified=true&status=false`;
+          url = `${apiUrl}/api/medicine/list?start=${start}&end=${end}&verified=true&status=true`;
         }
         // eslint-disable-next-line no-unused-vars
         const { headers, json } = await httpClient(url);
@@ -121,13 +150,55 @@ export default {
         };
       }
       case "medicine/unverified": {
-        return;
+        if (params.filter.name) {
+          url = `${apiUrl}/api/medicine/list?start=${start}&end=${end}&name=${params.filter.name}&verified=false&status=true`;
+        } else {
+          url = `${apiUrl}/api/medicine/list?start=${start}&end=${end}&verified=false&status=true`;
+        }
+        // eslint-disable-next-line no-unused-vars
+        const { headers, json } = await httpClient(url);
+        json.data.data.forEach((dat) => {
+          dat.id = dat._id;
+        });
+
+        return {
+          data: json.data.data,
+          total: json.data.count,
+        };
       }
       case "patient/verified": {
-        return;
+        if (params.filter.name) {
+          url = `${apiUrl}/api/patient/list?start=${start}&end=${end}&name=${params.filter.name}&verified=true&status=true`;
+        } else {
+          url = `${apiUrl}/api/patient/list?start=${start}&end=${end}&verified=true&status=true`;
+        }
+        // eslint-disable-next-line no-unused-vars
+        const { headers, json } = await httpClient(url);
+        json.data.data.forEach((dat) => {
+          dat.id = dat._id;
+        });
+
+        return {
+          data: json.data.data,
+          total: json.data.count,
+        };
       }
       case "patient/unverified": {
-        return;
+        if (params.filter.name) {
+          url = `${apiUrl}/api/patient/list?start=${start}&end=${end}&name=${params.filter.name}&verified=false&status=true`;
+        } else {
+          url = `${apiUrl}/api/patient/list?start=${start}&end=${end}&verified=false&status=true`;
+        }
+        // eslint-disable-next-line no-unused-vars
+        const { headers, json } = await httpClient(url);
+        json.data.data.forEach((dat) => {
+          dat.id = dat._id;
+        });
+
+        return {
+          data: json.data.data,
+          total: json.data.count,
+        };
       }
       case "donor": {
         if (params.filter.blood) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { useMediaQuery } from "@material-ui/core";
-import { VolLeaveBtn } from "../../Utils/Buttons";
+import { VolLeaveBtn, ApproveBtn } from "../../Utils/Buttons";
 import { Datagrid, List, SimpleList, TextField } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
 const VolunteerVerified = (props) => {
@@ -26,7 +26,7 @@ const VolunteerVerified = (props) => {
           <TextField source="email" />
           <TextField source="city" />
           <TextField source="state" />
-          <VolLeaveBtn />
+          <ApproveBtn verified={false} model="volunteer" />
         </Datagrid>
       )}
     </List>
