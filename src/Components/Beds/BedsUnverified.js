@@ -12,7 +12,8 @@ import {
 } from "react-admin";
 
 import { FilterBar } from "../../Utils/Filter";
-export const BedsVerified = (props) => {
+import { ApproveBtn } from "../../Utils/Buttons";
+export const BedsUnverified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
@@ -39,12 +40,13 @@ export const BedsVerified = (props) => {
           <TextField source="numOfBeds" />
           <TextField source="hosFees" />
           <TextField source="verificationTime" />
+          <ApproveBtn verified={true} model="beds" />
         </Datagrid>
       )}
     </List>
   );
 };
-export const BedsVerifiedCreate = (props) => {
+export const BedsUnverifiedCreate = (props) => {
   return (
     <Create {...props}>
       <SimpleForm>
@@ -60,4 +62,4 @@ export const BedsVerifiedCreate = (props) => {
   );
 };
 
-export default BedsVerified;
+export default BedsUnverified;

@@ -12,12 +12,13 @@ import {
   BooleanInput,
 } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
+import { ApproveBtn } from "../../Utils/Buttons";
 
-export const OxygenVerified = (props) => {
+export const OxygenUnverified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
-      title="Verified Oxygen"
+      title="Unverified Oxygen"
       filters={
         <FilterBar bars={[{ source: "city", label: "Search By City" }]} />
       }
@@ -41,12 +42,13 @@ export const OxygenVerified = (props) => {
           <TextField source="price" />
           <TextField source="verificationTime" />
           <TextField source="delivery" />
+          <ApproveBtn verified={true} model="oxygen" />
         </Datagrid>
       )}
     </List>
   );
 };
-export const OxygenVerifiedCreate = (props) => {
+export const OxygenUnverifiedCreate = (props) => {
   return (
     <Create {...props}>
       <SimpleForm>
@@ -61,4 +63,4 @@ export const OxygenVerifiedCreate = (props) => {
     </Create>
   );
 };
-export default OxygenVerified;
+export default OxygenUnverified;

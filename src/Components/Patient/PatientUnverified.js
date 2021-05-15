@@ -12,7 +12,8 @@ import {
   DateInput,
 } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
-export const PatientVerified = (props) => {
+import { ApproveBtn } from "../../Utils/Buttons";
+export const PatientUnverified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
@@ -40,12 +41,13 @@ export const PatientVerified = (props) => {
           <TextField source="email" />
           <TextField source="hospital" />
           <TextField source="hospitalcity" />
+          <ApproveBtn verified={true} model="patient" />
         </Datagrid>
       )}
     </List>
   );
 };
-export const PatientVerifiedCreate = (props) => {
+export const PatientUnverifiedCreate = (props) => {
   return (
     <Create {...props}>
       <SimpleForm>
@@ -60,4 +62,4 @@ export const PatientVerifiedCreate = (props) => {
     </Create>
   );
 };
-export default PatientVerified;
+export default PatientUnverified;

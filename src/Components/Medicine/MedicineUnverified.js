@@ -9,16 +9,18 @@ import {
   SimpleForm,
   TextInput,
   NumberInput,
+  BooleanInput,
 } from "react-admin";
-
 import { FilterBar } from "../../Utils/Filter";
-export const BedsVerified = (props) => {
+import { ApproveBtn } from "../../Utils/Buttons";
+
+export const MedicineUnverified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
       title="Volunteers"
       filters={
-        <FilterBar bars={[{ source: "hoscity", label: "Search By City" }]} />
+        <FilterBar bars={[{ source: "name", label: "Search Volunteer" }]} />
       }
       {...props}
       perPage={25}
@@ -27,37 +29,38 @@ export const BedsVerified = (props) => {
     >
       {isSmall ? (
         <SimpleList
-          primaryText={(record) => record.hosName}
-          secondaryText={(record) => record.hosCity}
-          tertiaryText={(record) => record.numOfBeds}
+          primaryText={(record) => record.name}
+          secondaryText={(record) => record.supplierContact}
+          tertiaryText={(record) => record.city}
         />
       ) : (
         <Datagrid rowClick="">
-          <TextField source="hosName" />
-          <TextField source="hoscity" />
+          <TextField source="name" />
+          <TextField source="supplierContact" />
+          <TextField source="city" />
           <TextField source="state" />
-          <TextField source="numOfBeds" />
-          <TextField source="hosFees" />
+          <TextField source="price" />
           <TextField source="verificationTime" />
+          <TextField source="delivery" />
+          <ApproveBtn verified={true} model="medicine" />
         </Datagrid>
       )}
     </List>
   );
 };
-export const BedsVerifiedCreate = (props) => {
+export const MedicineUnverifiedCreate = (props) => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <TextInput source="hosName" />
-        <TextInput source="hosContact" />
-        <TextInput source="hoscity" label="City" />
+        <TextInput source="name" />
+        <TextInput source="supplierContact" />
+        <TextInput source="city" />
         <TextInput source="state" />
-        <NumberInput source="numOfBeds" />
-        <NumberInput source="hosFees" />
+        <NumberInput source="price" />
         <TextInput source="verifiedBy" />
+        <BooleanInput source="delivery" />
       </SimpleForm>
     </Create>
   );
 };
-
-export default BedsVerified;
+export default MedicineUnverified;
