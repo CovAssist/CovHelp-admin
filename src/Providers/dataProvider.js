@@ -224,6 +224,7 @@ export default {
   create: async (resource, params) => {
     const request = await resource.split("/");
     console.log(typeof resource, resource);
+    // eslint-disable-next-line no-unused-vars
     const { headers, json } = await httpClient(
       `${apiUrl}/api/${request[0]}/create?${
         request[1] === "verified" ? "verified=true" : "verified:false"

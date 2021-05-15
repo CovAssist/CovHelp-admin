@@ -9,7 +9,6 @@ import {
   SimpleForm,
   TextInput,
   NumberInput,
-  BooleanInput,
   DateInput,
 } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";

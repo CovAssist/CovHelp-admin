@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useSelector } from "react-redux";
 import { Layout, MenuItemLink } from "react-admin";
 import { useMediaQuery } from "@material-ui/core";
 import {
@@ -17,7 +16,6 @@ import ListCollapse from "./List";
 
 const Menu = ({ onMenuClick, logout }) => {
   const isXSmall = useMediaQuery((theme) => theme.breakpoints.down("xs"));
-  const open = useSelector((state) => state.admin.ui.sidebarOpen);
   const [openVolunteerData, setOpenVolunteerData] = React.useState(false);
   const [openOxygenData, setOpenOxygenData] = React.useState(false);
   const [openMedicineData, setOpenMedicineData] = React.useState(false);

@@ -1,6 +1,6 @@
 import React from "react";
 import { useMediaQuery } from "@material-ui/core";
-import { VolLeaveBtn, ApproveBtn } from "../../Utils/Buttons";
+import { ApproveBtn } from "../../Utils/Buttons";
 import { Datagrid, List, SimpleList, TextField } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
 const VolunteerVerified = (props) => {

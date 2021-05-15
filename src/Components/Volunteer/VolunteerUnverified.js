@@ -2,7 +2,7 @@ import React from "react";
 import { useMediaQuery } from "@material-ui/core";
 import { Datagrid, List, SimpleList, TextField } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
-import { VolApproveBtn, ApproveBtn } from "../../Utils/Buttons";
+import { ApproveBtn } from "../../Utils/Buttons";
 const VolunteerUnverified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
