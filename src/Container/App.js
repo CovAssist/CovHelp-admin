@@ -68,12 +68,12 @@ const App = () => {
           create={BedsUnverifiedCreate}
         />
         <Resource
-          name="patients/verified"
+          name="patient/verified"
           list={PatientVerified}
           create={PatientVerifiedCreate}
         />
         <Resource
-          name="patients/unverified"
+          name="patient/unverified"
           list={PatientUnverified}
           create={PatientUnverifiedCreate}
         />

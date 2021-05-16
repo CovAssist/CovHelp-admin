@@ -110,12 +110,12 @@ const Menu = ({ onMenuClick, logout }) => {
         links={[
           {
             text: "Verified Patients",
-            url: "/patients/verified",
+            url: "/patient/verified",
             icon: Accessibility,
           },
           {
             text: "Unverified Patients",
-            url: "/patients/unverified",
+            url: "/patient/unverified",
             icon: Accessibility,
           },
         ]}
