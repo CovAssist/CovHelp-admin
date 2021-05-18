@@ -29,11 +29,16 @@ import BedsUnverified, {
 import PatientUnverified, {
   PatientUnverifiedCreate,
 } from "../Components/Patient/PatientUnverified";
+import authprovider from "../Providers/authprovider";
 const App = () => {
   return (
     <>
       <Toast />
-      <Admin layout={CustomLayout} dataProvider={dataprovider}>
+      <Admin
+        layout={CustomLayout}
+        dataProvider={dataprovider}
+        authProvider={authprovider}
+      >
         <Resource name="volunteers/verified" list={VolunteerVerified} />
         <Resource name="volunteers/past" list={VolunteerPast} />
         <Resource name="volunteers/unverified" list={VolunteerUnverified} />

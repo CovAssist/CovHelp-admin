@@ -4,6 +4,7 @@ const apiUrl =
     ? "https://covhelp.herokuapp.com"
     : "http://localhost:5000";
 const httpClient = (url, options = {}) => {
+  options.credentials = "include";
   return fetchUtils.fetchJson(url, options);
 };
 let url = "";
@@ -227,15 +228,19 @@ export default {
     // eslint-disable-next-line no-unused-vars
     const { headers, json } = await httpClient(
       `${apiUrl}/api/${request[0]}/create?${
-        request[1] === "verified" ? "verified=true" : "verified:false"
+        request[1] === "verified" ? "verified=true" : "verified=false"
       }`,
       {
         method: "POST",
         body: JSON.stringify(params),
       }
     );
-    console.log(json);
-    json.data.id = json.data._id;
-    return { data: json.data };
+    if (json.success) {
+      json.data.id = json.data._id;
+      return Promise.resolve({ data: json.data });
+    } else {
+      console.log("hiiiiii");
+      return Promise.reject(json);
+    }
   },
 };

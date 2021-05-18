@@ -9,6 +9,7 @@ import {
   SimpleForm,
   TextInput,
   NumberInput,
+  required,
 } from "react-admin";
 
 import { FilterBar } from "../../Utils/Filter";
@@ -48,10 +49,10 @@ export const BedsVerifiedCreate = (props) => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <TextInput source="hosName" />
-        <TextInput source="hosContact" />
-        <TextInput source="hoscity" label="City" />
-        <TextInput source="state" />
+        <TextInput source="hosName" validate={required()} />
+        <TextInput source="hosContact" validate={required()} />
+        <TextInput source="hoscity" label="City" validate={required()} />
+        <TextInput source="state" validate={required()} />
         <NumberInput source="numOfBeds" />
         <NumberInput source="hosFees" />
         <TextInput source="verifiedBy" />
