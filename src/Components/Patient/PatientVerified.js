@@ -10,6 +10,7 @@ import {
   TextInput,
   NumberInput,
   DateInput,
+  required,
 } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
 export const PatientVerified = (props) => {
@@ -49,11 +50,11 @@ export const PatientVerifiedCreate = (props) => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <TextInput source="name" />
-        <DateInput source="dob" />
-        <TextInput source="email" />
-        <TextInput source="hospitalcity" />
-        <TextInput source="state" />
+        <TextInput source="name" validate={required()} />
+        <DateInput source="dob" validate={required()} />
+        <TextInput source="email" validate={required()} />
+        <TextInput source="hospitalcity" validate={required()} />
+        <TextInput source="state" validate={required()} />
         <TextInput source="hospital" />
         <NumberInput source="contact" />
       </SimpleForm>
