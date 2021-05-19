@@ -1,11 +1,13 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 const apiUrl =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:5000";
+  process.env.NODE_ENV === "production"
+    ? "https://covhelp.herokuapp.com"
+    : "http://localhost:5000";
 const fetchHeaders =
   process.env.NODE_ENV !== "production"
     ? { "Access-Control-Allow-Origin": "http://localhost:3000" }
-    : {};
+    : { "Access-Control-Allow-Origin": "https://cov-help-admin.vercel.app" };
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   login: async ({ username, password }) => {
