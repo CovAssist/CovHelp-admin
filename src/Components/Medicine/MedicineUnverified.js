@@ -10,6 +10,7 @@ import {
   TextInput,
   NumberInput,
   BooleanInput,
+  required,
 } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
 import { ApproveBtn } from "../../Utils/Buttons";
@@ -52,10 +53,10 @@ export const MedicineUnverifiedCreate = (props) => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <TextInput source="name" />
-        <TextInput source="supplierContact" />
-        <TextInput source="city" />
-        <TextInput source="state" />
+        <TextInput source="name" validate={required()} />
+        <TextInput source="supplierContact" validate={required()} />
+        <TextInput source="city" validate={required()} />
+        <TextInput source="state" validate={required()} />
         <NumberInput source="price" />
         <TextInput source="verifiedBy" />
         <BooleanInput source="delivery" />

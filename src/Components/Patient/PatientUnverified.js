@@ -10,6 +10,7 @@ import {
   TextInput,
   NumberInput,
   DateInput,
+  required,
 } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
 import { ApproveBtn } from "../../Utils/Buttons";
@@ -51,11 +52,11 @@ export const PatientUnverifiedCreate = (props) => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <TextInput source="name" />
-        <DateInput source="dob" />
-        <TextInput source="email" />
-        <TextInput source="hospitalcity" />
-        <TextInput source="state" />
+        <TextInput source="name" validate={required()} />
+        <DateInput source="dob" validate={required()} />
+        <TextInput source="email" validate={required()} />
+        <TextInput source="hospitalcity" validate={required()} />
+        <TextInput source="state" validate={required()} />
         <TextInput source="hospital" />
         <NumberInput source="contact" />
       </SimpleForm>
