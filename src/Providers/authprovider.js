@@ -30,7 +30,14 @@ export default {
     }
   },
   logout: async () => {
-    await axios.get(`${apiUrl}/api/auth/logout`);
+    await axios.get(`${apiUrl}/api/auth/logout`, {
+      withCredentials: true,
+      crossDomain: true,
+      headers: new Headers({
+        "Content-type": "application/json",
+        ...fetchHeaders,
+      }),
+    });
     return Promise.resolve();
   },
   checkError: ({ status }) => {
