@@ -33,7 +33,7 @@ const Approve = ({ record, model, verified }) => {
       onClick={async (event) => {
         event.stopPropagation();
         const data = await approve({ id: record.id }, verified, model);
-        setStatus(false);
+        if (data.success) setStatus(false);
         setAlertProps({
           open: true,
           alert: data.success ? "success" : "error",

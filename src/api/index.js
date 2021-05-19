@@ -21,7 +21,6 @@ export const changeVolunteerStatus = async (body, verified) => {
 };
 export const approve = async (body, verified, model) => {
   try {
-    console.log(body);
     const { data } = await axios.post(
       `${baseUrl}/api/${model}/changestatus?${
         verified ? "verified=true" : null
