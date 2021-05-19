@@ -40,7 +40,14 @@ export default {
     return Promise.resolve();
   },
   checkAuth: async () => {
-    const { data } = await axios.get(`${apiUrl}/api/auth/checkauth`);
+    const { data } = await axios.get(`${apiUrl}/api/auth/checkauth`, {
+      withCredentials: true,
+      crossDomain: true,
+      headers: new Headers({
+        "Content-type": "application/json",
+        ...fetchHeaders,
+      }),
+    });
     return data.success ? Promise.resolve() : Promise.reject();
   },
   getPermissions: () => Promise.resolve(),
