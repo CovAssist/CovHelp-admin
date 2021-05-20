@@ -9,7 +9,6 @@ import {
   SimpleForm,
   TextInput,
   NumberInput,
-  DateInput,
   required,
   NumberField,
 } from "react-admin";
