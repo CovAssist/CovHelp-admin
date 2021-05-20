@@ -37,7 +37,7 @@ export const BedsVerified = (props) => {
           <TextField source="hosName" />
           <TextField source="hoscity" />
           <TextField source="state" />
-          <TextField source="numOfBeds" />
+          <TextField source="description" />
           <TextField source="hosFees" />
           <TextField source="verificationTime" />
         </Datagrid>
@@ -53,7 +53,7 @@ export const BedsVerifiedCreate = (props) => {
         <TextInput source="hosContact" validate={required()} />
         <TextInput source="hoscity" label="City" validate={required()} />
         <TextInput source="state" validate={required()} />
-        <NumberInput source="numOfBeds" />
+        <TextInput source="description" validate={required()} />
         <NumberInput source="hosFees" />
         <TextInput source="verifiedBy" />
       </SimpleForm>
