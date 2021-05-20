@@ -36,7 +36,8 @@ export const MedicineUnverified = (props) => {
         />
       ) : (
         <Datagrid rowClick="">
-          <TextField source="name" />
+          <TextField source="medName" />
+          <TextField source="supplierName" />
           <TextField source="supplierContact" />
           <TextField source="city" />
           <TextField source="state" />
@@ -53,7 +54,8 @@ export const MedicineUnverifiedCreate = (props) => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <TextInput source="name" validate={required()} />
+        <TextInput source="medName" validate={required()} />
+        <TextInput source="supplierName" validate={required()} />
         <TextInput source="supplierContact" validate={required()} />
         <TextInput source="city" validate={required()} />
         <TextInput source="state" validate={required()} />

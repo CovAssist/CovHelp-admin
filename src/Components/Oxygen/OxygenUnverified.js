@@ -11,6 +11,7 @@ import {
   NumberInput,
   BooleanInput,
   required,
+  BooleanField,
 } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
 import { ApproveBtn } from "../../Utils/Buttons";
@@ -40,9 +41,10 @@ export const OxygenUnverified = (props) => {
           <TextField source="supplierContact" />
           <TextField source="city" />
           <TextField source="state" />
+          <TextField source="description" />
           <TextField source="price" />
           <TextField source="verificationTime" />
-          <TextField source="delivery" />
+          <BooleanField source="delivery" />
           <ApproveBtn verified={true} model="oxygen" />
         </Datagrid>
       )}
@@ -57,6 +59,7 @@ export const OxygenUnverifiedCreate = (props) => {
         <TextInput source="supplierContact" validate={required()} />
         <TextInput source="city" validate={required()} />
         <TextInput source="state" validate={required()} />
+        <TextInput source="description" />
         <NumberInput source="price" />
         <TextInput source="verifiedBy" />
         <BooleanInput source="delivery" />

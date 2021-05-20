@@ -11,6 +11,7 @@ import {
   NumberInput,
   DateInput,
   required,
+  NumberField,
 } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
 import { ApproveBtn } from "../../Utils/Buttons";
@@ -38,8 +39,12 @@ export const PatientUnverified = (props) => {
       ) : (
         <Datagrid rowClick="">
           <TextField source="name" />
+          <TextField source="attenderName" />
+          <TextField source="oxygenLevel" />
+          <TextField source="requirement" />
+          <TextField source="name" />
+          <NumberField source="age" />
           <TextField source="contact" />
-          <TextField source="email" />
           <TextField source="hospital" />
           <TextField source="hospitalcity" />
           <ApproveBtn verified={true} model="patient" />
@@ -53,12 +58,16 @@ export const PatientUnverifiedCreate = (props) => {
     <Create {...props}>
       <SimpleForm>
         <TextInput source="name" validate={required()} />
-        <DateInput source="dob" validate={required()} />
-        <TextInput source="email" validate={required()} />
+        <TextInput source="attenderName" />
+        <TextInput source="requirement" />
+        <TextInput source="attenderName" />
+        <TextInput source="bloodGroup" />
+        <NumberInput source="age" validate={required()} />
         <TextInput source="hospitalcity" validate={required()} />
         <TextInput source="state" validate={required()} />
         <TextInput source="hospital" />
-        <NumberInput source="contact" />
+        <TextInput source="remarks" />
+        <NumberInput source="contact" validate={required()} />
       </SimpleForm>
     </Create>
   );
