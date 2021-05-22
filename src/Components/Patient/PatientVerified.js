@@ -9,10 +9,10 @@ import {
   SimpleForm,
   TextInput,
   NumberInput,
-  DateInput,
   required,
 } from "react-admin";
 import { FilterBar } from "../../Utils/Filter";
+import AssignVolunteer from "../../Utils/Buttons/AssignVolunteer";
 export const PatientVerified = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
@@ -35,12 +35,18 @@ export const PatientVerified = (props) => {
           tertiaryText={(record) => record.contact}
         />
       ) : (
-        <Datagrid rowClick="">
+        <Datagrid rowClick="" style={{ minHeight: "50px" }}>
           <TextField source="name" />
+          <TextField source="attenderName" />
           <TextField source="contact" />
-          <TextField source="email" />
+          <TextField source="age" />
+          <TextField source="bloodGroup" />
+          <TextField source="requirement" />
           <TextField source="hospital" />
           <TextField source="hospitalcity" />
+          <TextField source="remarks" />
+          <TextField source="description" />
+          <AssignVolunteer label="Volunteer Assigned" />
         </Datagrid>
       )}
     </List>
@@ -51,12 +57,18 @@ export const PatientVerifiedCreate = (props) => {
     <Create {...props}>
       <SimpleForm>
         <TextInput source="name" validate={required()} />
-        <DateInput source="dob" validate={required()} />
-        <TextInput source="email" validate={required()} />
+        <NumberInput source="age" validate={required()} />
+        <TextInput source="attenderName" validate={required()} />
         <TextInput source="hospitalcity" validate={required()} />
         <TextInput source="state" validate={required()} />
+        <TextInput source="requirement" validate={required()} />
+        <TextInput source="bloodGroup" />
+        <TextInput source="volunteerAssigned" />
+        <TextInput source="oxygenLevel" />
+        <TextInput source="remarks" />
         <TextInput source="hospital" />
         <NumberInput source="contact" />
+        <TextInput source="description" />
       </SimpleForm>
     </Create>
   );

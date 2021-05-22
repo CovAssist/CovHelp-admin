@@ -30,6 +30,7 @@ import PatientUnverified, {
   PatientUnverifiedCreate,
 } from "../Components/Patient/PatientUnverified";
 import authprovider from "../Providers/authprovider";
+import "./App.css";
 const App = () => {
   return (
     <>

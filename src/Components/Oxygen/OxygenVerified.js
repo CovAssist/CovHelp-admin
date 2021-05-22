@@ -41,7 +41,6 @@ export const OxygenVerified = (props) => {
           <TextField source="city" />
           <TextField source="state" />
           <TextField source="description" />
-          <TextField source="price" />
           <TextField source="verificationTime" />
           <BooleanField source="delivery" />
         </Datagrid>
@@ -58,8 +57,6 @@ export const OxygenVerifiedCreate = (props) => {
         <TextInput source="city" validate={required()} />
         <TextInput source="state" validate={required()} />
         <TextInput source="description" />
-        <NumberInput source="price" />
-        <TextInput source="verifiedBy" />
         <BooleanInput source="delivery" />
       </SimpleForm>
     </Create>

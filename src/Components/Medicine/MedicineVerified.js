@@ -40,7 +40,6 @@ export const MedicineVerified = (props) => {
           <TextField source="supplierContact" />
           <TextField source="city" />
           <TextField source="state" />
-          <TextField source="price" />
           <TextField source="verificationTime" />
           <TextField source="delivery" />
         </Datagrid>
@@ -57,9 +56,8 @@ export const MedicineVerifiedCreate = (props) => {
         <TextInput source="supplierContact" validate={required()} />
         <TextInput source="city" validate={required()} />
         <TextInput source="state" validate={required()} />
-        <NumberInput source="price" validate={required()} />
-        <TextInput source="verifiedBy" />
         <BooleanInput source="delivery" />
+        <BooleanInput source="description" />
       </SimpleForm>
     </Create>
   );
