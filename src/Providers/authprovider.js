@@ -15,12 +15,12 @@ export default {
       `${apiUrl}/api/auth/login`,
       { username, password },
       {
-        withCredentials: true,
-        crossDomain: true,
-        headers: new Headers({
-          "Content-type": "application/json",
-          ...fetchHeaders,
-        }),
+        // withCredentials: true,
+        // crossDomain: true,
+        // headers: new Headers({
+        //   "Content-type": "application/json",
+        //   ...fetchHeaders,
+        // }),
       }
     );
     if (data.success) {
@@ -31,12 +31,12 @@ export default {
   },
   logout: async () => {
     await axios.get(`${apiUrl}/api/auth/logout`, {
-      withCredentials: true,
-      crossDomain: true,
-      headers: new Headers({
-        "Content-type": "application/json",
-        ...fetchHeaders,
-      }),
+      // withCredentials: true,
+      // crossDomain: true,
+      // headers: new Headers({
+      //   "Content-type": "application/json",
+      //   ...fetchHeaders,
+      // }),
     });
     return Promise.resolve();
   },
@@ -48,12 +48,12 @@ export default {
   },
   checkAuth: async () => {
     const { data } = await axios.get(`${apiUrl}/api/auth/checkauth`, {
-      withCredentials: true,
-      crossDomain: true,
-      headers: new Headers({
-        "Content-type": "application/json",
-        ...fetchHeaders,
-      }),
+      // withCredentials: true,
+      // crossDomain: true,
+      // headers: new Headers({
+      //   "Content-type": "application/json",
+      //   ...fetchHeaders,
+      // }),
     });
     return data.success ? Promise.resolve() : Promise.reject();
   },

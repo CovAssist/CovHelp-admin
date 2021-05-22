@@ -41,7 +41,6 @@ export const MedicineUnverified = (props) => {
           <TextField source="supplierContact" />
           <TextField source="city" />
           <TextField source="state" />
-          <TextField source="price" />
           <TextField source="verificationTime" />
           <TextField source="delivery" />
           <ApproveBtn verified={true} model="medicine" />
@@ -55,13 +54,12 @@ export const MedicineUnverifiedCreate = (props) => {
     <Create {...props}>
       <SimpleForm>
         <TextInput source="medName" validate={required()} />
-        <TextInput source="supplierName" validate={required()} />
+        <TextInput source="supplierName" />
         <TextInput source="supplierContact" validate={required()} />
         <TextInput source="city" validate={required()} />
         <TextInput source="state" validate={required()} />
-        <NumberInput source="price" />
-        <TextInput source="verifiedBy" />
         <BooleanInput source="delivery" />
+        <BooleanInput source="description" />
       </SimpleForm>
     </Create>
   );

@@ -8,7 +8,6 @@ import {
   SimpleForm,
   Create,
   TextInput,
-  NumberInput,
   BooleanInput,
   required,
   BooleanField,
@@ -42,7 +41,6 @@ export const OxygenUnverified = (props) => {
           <TextField source="city" />
           <TextField source="state" />
           <TextField source="description" />
-          <TextField source="price" />
           <TextField source="verificationTime" />
           <BooleanField source="delivery" />
           <ApproveBtn verified={true} model="oxygen" />
@@ -60,8 +58,6 @@ export const OxygenUnverifiedCreate = (props) => {
         <TextInput source="city" validate={required()} />
         <TextInput source="state" validate={required()} />
         <TextInput source="description" />
-        <NumberInput source="price" />
-        <TextInput source="verifiedBy" />
         <BooleanInput source="delivery" />
       </SimpleForm>
     </Create>

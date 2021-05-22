@@ -33,3 +33,14 @@ export const approve = async (body, verified, model) => {
     return;
   }
 };
+export const update = async (body) => {
+  try {
+    console.log(body);
+    const { data } = await axios.post(`${baseUrl}/api/patient/update`, body);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+};

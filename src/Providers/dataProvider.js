@@ -66,8 +66,8 @@ export default {
         };
       }
       case "oxygen/verified": {
-        if (params.filter.name) {
-          url = `${apiUrl}/api/oxygen/list?start=${start}&end=${end}&name=${params.filter.name}&verified=true&status=true`;
+        if (params.filter.city) {
+          url = `${apiUrl}/api/oxygen/list?start=${start}&end=${end}&city=${params.filter.city}&verified=true&status=true`;
         } else {
           url = `${apiUrl}/api/oxygen/list?start=${start}&end=${end}&verified=true&status=true`;
         }

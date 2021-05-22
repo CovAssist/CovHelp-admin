@@ -39,13 +39,14 @@ export const PatientUnverified = (props) => {
         <Datagrid rowClick="">
           <TextField source="name" />
           <TextField source="attenderName" />
-          <TextField source="oxygenLevel" />
-          <TextField source="requirement" />
-          <TextField source="name" />
-          <NumberField source="age" />
           <TextField source="contact" />
+          <TextField source="age" />
+          <TextField source="requirement" />
           <TextField source="hospital" />
           <TextField source="hospitalcity" />
+          <TextField source="remarks" />
+          <TextField source="volunteerAssigned" />
+          <TextField source="description" />
           <ApproveBtn verified={true} model="patient" />
         </Datagrid>
       )}
@@ -57,16 +58,18 @@ export const PatientUnverifiedCreate = (props) => {
     <Create {...props}>
       <SimpleForm>
         <TextInput source="name" validate={required()} />
-        <TextInput source="attenderName" />
-        <TextInput source="requirement" />
-        <TextInput source="attenderName" />
-        <TextInput source="bloodGroup" />
         <NumberInput source="age" validate={required()} />
+        <TextInput source="attenderName" validate={required()} />
         <TextInput source="hospitalcity" validate={required()} />
         <TextInput source="state" validate={required()} />
-        <TextInput source="hospital" />
+        <TextInput source="requirement" validate={required()} />
+        <TextInput source="bloodGroup" />
+        <TextInput source="volunteerAssigned" />
+        <TextInput source="oxygenLevel" />
         <TextInput source="remarks" />
-        <NumberInput source="contact" validate={required()} />
+        <TextInput source="hospital" />
+        <NumberInput source="contact" />
+        <TextInput source="description" />
       </SimpleForm>
     </Create>
   );

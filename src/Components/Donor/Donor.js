@@ -30,7 +30,11 @@ export const OxygenVerified = (props) => {
           <TextField source="city" />
           <TextField source="state" />
           <TextField source="blood" />
+          <TextField source="age" />
+          <TextField source="recovered" />
+          <TextField source="lastDonation" />
           <TextField source="date" />
+          <TextField source="description" />
         </Datagrid>
       )}
     </List>
