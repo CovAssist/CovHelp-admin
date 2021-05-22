@@ -8,7 +8,6 @@ import {
   SimpleForm,
   Create,
   TextInput,
-  NumberInput,
   BooleanInput,
   required,
   BooleanField,
