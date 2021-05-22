@@ -8,7 +8,6 @@ import {
   Create,
   SimpleForm,
   TextInput,
-  NumberInput,
   required,
 } from "react-admin";
 
